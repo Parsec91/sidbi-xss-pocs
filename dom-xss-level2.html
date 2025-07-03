@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM XSS PoC – Level 2</title>
+</head>
+<body>
+  <h2>DOM XSS PoC – input.value → innerHTML</h2>
+  <input type="text" id="complaint_id_level_2" placeholder="Enter complaint ID">
+  <button onclick="run()">Submit</button>
+  <div id="output"></div>
+
+  <script>
+    function run() {
+      let input = document.getElementById("complaint_id_level_2").value;
+      document.getElementById("output").innerHTML = "<p>Searching for complaint ID: " + input + "</p>";
+    }
+  </script>
+</body>
+</html>

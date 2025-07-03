@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM XSS PoC – Path Injection</title>
+</head>
+<body>
+  <h2>DOM XSS PoC – location.pathname → anchor.href</h2>
+  <a href="#">Original Link</a>
+
+  <script>
+    let target = location.pathname.split('/').pop();
+    document.querySelectorAll('a').forEach(a => {
+      a.href = target;
+      a.textContent = 'Click me (XSS Test)';
+      a.style.color = 'red';
+      a.style.fontSize = '20px';
+    });
+  </script>
+</body>
+</html>
